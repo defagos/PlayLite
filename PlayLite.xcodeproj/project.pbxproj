@@ -53,6 +53,7 @@
 		6F3DACD624BC788100BF5B20 /* SRGNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD324BC788000BF5B20 /* SRGNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F3DACD724BC788100BF5B20 /* YYWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD424BC788000BF5B20 /* YYWebImage.framework */; };
 		6F3DACD824BC788100BF5B20 /* YYWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD424BC788000BF5B20 /* YYWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6F3DACDA24BC78C200BF5B20 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DACD924BC78C200BF5B20 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		6F3DACAF24BC784C00BF5B20 /* SRGLetterbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SRGLetterbox.framework; path = Carthage/Build/iOS/SRGLetterbox.framework; sourceTree = "<group>"; };
 		6F3DACD324BC788000BF5B20 /* SRGNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SRGNetwork.framework; path = Carthage/Build/iOS/SRGNetwork.framework; sourceTree = "<group>"; };
 		6F3DACD424BC788000BF5B20 /* YYWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YYWebImage.framework; path = Carthage/Build/iOS/YYWebImage.framework; sourceTree = "<group>"; };
+		6F3DACD924BC78C200BF5B20 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -209,13 +211,14 @@
 		6F3DAC6C24BC6A9800BF5B20 /* PlayLite */ = {
 			isa = PBXGroup;
 			children = (
-				6F3DAC6D24BC6A9800BF5B20 /* AppDelegate.swift */,
-				6F3DAC6F24BC6A9800BF5B20 /* SceneDelegate.swift */,
-				6F3DAC7124BC6A9800BF5B20 /* ContentView.swift */,
-				6F3DAC7324BC6A9A00BF5B20 /* Assets.xcassets */,
-				6F3DAC7824BC6A9A00BF5B20 /* LaunchScreen.storyboard */,
-				6F3DAC7B24BC6A9A00BF5B20 /* Info.plist */,
 				6F3DAC7524BC6A9A00BF5B20 /* Preview Content */,
+				6F3DAC6D24BC6A9800BF5B20 /* AppDelegate.swift */,
+				6F3DAC7324BC6A9A00BF5B20 /* Assets.xcassets */,
+				6F3DAC7124BC6A9800BF5B20 /* ContentView.swift */,
+				6F3DACD924BC78C200BF5B20 /* HomeViewController.swift */,
+				6F3DAC7B24BC6A9A00BF5B20 /* Info.plist */,
+				6F3DAC7824BC6A9A00BF5B20 /* LaunchScreen.storyboard */,
+				6F3DAC6F24BC6A9800BF5B20 /* SceneDelegate.swift */,
 			);
 			path = PlayLite;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				6F3DAC6E24BC6A9800BF5B20 /* AppDelegate.swift in Sources */,
 				6F3DAC7024BC6A9800BF5B20 /* SceneDelegate.swift in Sources */,
 				6F3DAC7224BC6A9800BF5B20 /* ContentView.swift in Sources */,
+				6F3DACDA24BC78C200BF5B20 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
