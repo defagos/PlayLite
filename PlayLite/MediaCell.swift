@@ -31,7 +31,7 @@ struct ImageView: View {
 }
 
 struct MediaCell: View {
-    var media: SRGMedia
+    let media: SRGMedia
     
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -57,14 +57,14 @@ struct MediaCell: View {
 }
 
 struct MediaCell_Previews: PreviewProvider {
-    static var sampleMedias: [SRGMedia] = {
+    static var sampleMedias: [SRGMedia]? = {
         let dataProvider = SRGDataProvider(serviceURL: SRGIntegrationLayerProductionServiceURL())
-        var sampleMedias: [SRGMedia] = []
+        var sampleMedias: [SRGMedia]?
         
         let group = DispatchGroup()
         group.enter()
         dataProvider.tvTrendingMedias(for: .RTS, withLimit: 10) { (medias, _, _) in
-            sampleMedias = medias ?? []
+            sampleMedias = medias
             group.leave()
         }.withOptions(.backgroundCompletionEnabled).resume()
         group.wait()
@@ -72,7 +72,7 @@ struct MediaCell_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        if let media = sampleMedias.first {
+        if let media = sampleMedias?.first {
             MediaCell(media: media)
                 .previewLayout(.sizeThatFits)
         }
