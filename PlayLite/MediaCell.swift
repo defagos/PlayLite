@@ -56,8 +56,24 @@ struct MediaCell: View {
 }
 
 struct MediaCell_Previews: PreviewProvider {
+    static var sampleMedias: [SRGMedia] = {
+        let dataProvider = SRGDataProvider(serviceURL: SRGIntegrationLayerProductionServiceURL())
+        var sampleMedias: [SRGMedia] = []
+        
+        let group = DispatchGroup()
+        group.enter()
+        dataProvider.tvLatestMedias(for: .SRF) { (medias, _, _, _, _) in
+            if let medias = medias {
+                sampleMedias = medias
+            }
+            group.leave()
+        }.withOptions(.backgroundCompletionEnabled).resume()
+        group.wait()
+        return sampleMedias
+    }()
+    
     static var previews: some View {
-        List(SRGMedia.sampleTVMedias, id: \.uid) { media in
+        List(sampleMedias, id: \.uid) { media in
             MediaCell(media: media)
         }
     }
