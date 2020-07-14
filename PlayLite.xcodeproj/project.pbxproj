@@ -217,6 +217,7 @@
 		6F3DAC6C24BC6A9800BF5B20 /* PlayLite */ = {
 			isa = PBXGroup;
 			children = (
+				6F3DAC7524BC6A9A00BF5B20 /* Preview Content */,
 				6F3DAC6D24BC6A9800BF5B20 /* AppDelegate.swift */,
 				6F3DAC7324BC6A9A00BF5B20 /* Assets.xcassets */,
 				6F3DAC7124BC6A9800BF5B20 /* HomeView.swift */,
@@ -224,7 +225,6 @@
 				6F3DAC7B24BC6A9A00BF5B20 /* Info.plist */,
 				6F3DAC7824BC6A9A00BF5B20 /* LaunchScreen.storyboard */,
 				6F3DACDB24BC87C700BF5B20 /* MediaCell.swift */,
-				6F3DAC7524BC6A9A00BF5B20 /* Preview Content */,
 				6F3DAC6F24BC6A9800BF5B20 /* SceneDelegate.swift */,
 			);
 			path = PlayLite;
