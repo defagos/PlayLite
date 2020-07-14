@@ -44,7 +44,7 @@ struct MediaCell: View {
         VStack {
             if let imageUrl = media.imageURL(for: .height, withValue: 200, type: .default) {
                 ImageView(url: imageUrl)
-                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
             }
             VStack {
                 Text(media.title)
@@ -72,8 +72,9 @@ struct MediaCell_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        List(sampleMedias, id: \.uid) { media in
+        if let media = sampleMedias.first {
             MediaCell(media: media)
+                .previewLayout(.sizeThatFits)
         }
     }
 }
