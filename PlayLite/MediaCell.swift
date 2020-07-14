@@ -42,9 +42,10 @@ struct MediaCell: View {
     
     var body: some View {
         VStack {
-            // FIXME: No forced unwrapping
-            ImageView(url: media.imageURL(for: .height, withValue: 200, type: .default)!)
-                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+            if let imageUrl = media.imageURL(for: .height, withValue: 200, type: .default) {
+                ImageView(url: imageUrl)
+                    .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
+            }
             VStack {
                 Text(media.title)
                     .font(.headline)
