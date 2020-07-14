@@ -7,13 +7,8 @@
 
 import FetchImage
 import SRGAppearance
+import SRGDataProvider
 import SwiftUI
-
-struct Media {
-    let name: String
-    let imageUrl: URL
-    let date: Date
-}
 
 struct ImageView: View {
     @ObservedObject var image: FetchImage
@@ -36,7 +31,7 @@ struct ImageView: View {
 }
 
 struct MediaCell: View {
-    var media: Media
+    var media: SRGMedia
     
     static let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -47,10 +42,11 @@ struct MediaCell: View {
     
     var body: some View {
         VStack {
-            ImageView(url: media.imageUrl)
+            // FIXME: No forced unwrapping
+            ImageView(url: media.imageURL(for: .height, withValue: 200, type: .default)!)
                 .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fill)
             VStack {
-                Text(media.name)
+                Text(media.title)
                     .font(.headline)
                 Text(Self.dateFormatter.string(from: media.date))
                     .font(.subheadline)
@@ -61,10 +57,8 @@ struct MediaCell: View {
 
 struct MediaCell_Previews: PreviewProvider {
     static var previews: some View {
-        let imageUrl = URL(string: "https://www.rts.ch/2020/07/13/17/11/10721864.image/16x9/scale/width/800")!
-        let media = Media(name: "Pardonnez-moi", imageUrl: imageUrl, date: Date())
-        MediaCell(media: media)
-            .padding()
-            .previewLayout(.fixed(width: 320, height: 220))
+        List(SRGMedia.sampleTVMedias, id: \.uid) { media in
+            MediaCell(media: media)
+        }
     }
 }
