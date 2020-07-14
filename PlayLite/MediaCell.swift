@@ -62,10 +62,8 @@ struct MediaCell_Previews: PreviewProvider {
         
         let group = DispatchGroup()
         group.enter()
-        dataProvider.tvLatestMedias(for: .SRF) { (medias, _, _, _, _) in
-            if let medias = medias {
-                sampleMedias = medias
-            }
+        dataProvider.tvTrendingMedias(for: .RTS, withLimit: 10) { (medias, _, _) in
+            sampleMedias = medias ?? []
             group.leave()
         }.withOptions(.backgroundCompletionEnabled).resume()
         group.wait()
