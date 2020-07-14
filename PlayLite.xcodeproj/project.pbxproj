@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -55,6 +55,8 @@
 		6F3DACD824BC788100BF5B20 /* YYWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD424BC788000BF5B20 /* YYWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F3DACDA24BC78C200BF5B20 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DACD924BC78C200BF5B20 /* HomeViewController.swift */; };
 		6F3DACDC24BC87C700BF5B20 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DACDB24BC87C700BF5B20 /* MediaCell.swift */; };
+		6F3DAD1924BDBEFB00BF5B20 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6F3DAD1824BDBEFB00BF5B20 /* FetchImage */; };
+		6F3DAD1C24BDBF0800BF5B20 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6F3DAD1B24BDBF0800BF5B20 /* Nuke */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -159,12 +161,14 @@
 				6F3DACC124BC787F00BF5B20 /* SRGAppearance.framework in Frameworks */,
 				6F3DACC724BC788000BF5B20 /* SRGDiagnostics.framework in Frameworks */,
 				6F3DACBB24BC787F00BF5B20 /* SRGAnalytics_DataProvider.framework in Frameworks */,
+				6F3DAD1C24BDBF0800BF5B20 /* Nuke in Frameworks */,
 				6F3DACB824BC786400BF5B20 /* Mantle.framework in Frameworks */,
 				6F3DACB624BC786400BF5B20 /* MAKVONotificationCenter.framework in Frameworks */,
 				6F3DACD124BC788000BF5B20 /* TCSDK.framework in Frameworks */,
 				6F3DACB424BC786400BF5B20 /* libextobjc.framework in Frameworks */,
 				6F3DACC924BC788000BF5B20 /* SRGLetterbox.framework in Frameworks */,
 				6F3DACBF24BC787F00BF5B20 /* SRGAnalytics.framework in Frameworks */,
+				6F3DAD1924BDBEFB00BF5B20 /* FetchImage in Frameworks */,
 				6F3DACCF24BC788000BF5B20 /* TCCore.framework in Frameworks */,
 				6F3DACC324BC788000BF5B20 /* SRGContentProtection.framework in Frameworks */,
 				6F3DACB224BC786400BF5B20 /* FXReachability.framework in Frameworks */,
@@ -296,6 +300,10 @@
 			dependencies = (
 			);
 			name = PlayLite;
+			packageProductDependencies = (
+				6F3DAD1824BDBEFB00BF5B20 /* FetchImage */,
+				6F3DAD1B24BDBF0800BF5B20 /* Nuke */,
+			);
 			productName = PlayLite;
 			productReference = 6F3DAC6A24BC6A9800BF5B20 /* PlayLite.app */;
 			productType = "com.apple.product-type.application";
@@ -367,6 +375,10 @@
 				Base,
 			);
 			mainGroup = 6F3DAC6124BC6A9800BF5B20;
+			packageReferences = (
+				6F3DAD1724BDBEFA00BF5B20 /* XCRemoteSwiftPackageReference "FetchImage" */,
+				6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = 6F3DAC6B24BC6A9800BF5B20 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -745,6 +757,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6F3DAD1724BDBEFA00BF5B20 /* XCRemoteSwiftPackageReference "FetchImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/FetchImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.1;
+			};
+		};
+		6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6F3DAD1824BDBEFB00BF5B20 /* FetchImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F3DAD1724BDBEFA00BF5B20 /* XCRemoteSwiftPackageReference "FetchImage" */;
+			productName = FetchImage;
+		};
+		6F3DAD1B24BDBF0800BF5B20 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6F3DAC6224BC6A9800BF5B20 /* Project object */;
 }
