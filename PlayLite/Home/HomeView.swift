@@ -55,6 +55,26 @@ class HomeModel: ObservableObject {
             if let medias = medias {
                 self.rows.append(HomeRow(id: "expiring", title: "Soon expiring", medias: medias))
             }
+        }).withPageSize(20) {
+            self.requestQueue.add(request, resume: true)
+        }
+    }
+    
+    private func loadTopicsMedias() {
+        if let request = SRGDataProvider.current?.tvTopics(for: .RTS, withCompletionBlock: { (topics, _, error) in
+            self.requestQueue.reportError(error)
+            
+            topics?.forEach { topic in
+                if let request = SRGDataProvider.current?.latestMediasForTopic(withURN: topic.urn, completionBlock: { (medias, _, _, _, error) in
+                    self.requestQueue.reportError(error)
+                    
+                    if let medias = medias {
+                        self.rows.append(HomeRow(id: topic.urn, title: topic.title, medias: medias))
+                    }
+                }).withPageSize(20) {
+                    self.requestQueue.add(request, resume: true)
+                }
+            }
         }) {
             self.requestQueue.add(request, resume: true)
         }
@@ -64,6 +84,7 @@ class HomeModel: ObservableObject {
         loadTrendingMedias()
         loadMostSeenMedias()
         loadSoonExpiringMedias()
+        loadTopicsMedias()
     }
     
     deinit {
