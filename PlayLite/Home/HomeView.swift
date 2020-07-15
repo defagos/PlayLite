@@ -80,6 +80,7 @@ class HomeModel: ObservableObject {
         }
     }
     
+    // FIXME: Order is not guaranteed
     private func refresh() {
         loadTrendingMedias()
         loadMostSeenMedias()
