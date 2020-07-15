@@ -21,7 +21,7 @@ class HomeModel: ObservableObject {
     }
     
     private func refresh() {
-        let trendingMediasRequest = SRGDataProvider.current?.tvTrendingMedias(for: .RTS, withLimit: 20, completionBlock: { (medias, _, error) in
+        let trendingMediasRequest = SRGDataProvider.current?.tvTrendingMedias(for: .RTS, withLimit: 20, editorialLimit: 3, episodesOnly: false, completionBlock: { (medias, _, error) in
             self.requestQueue.reportError(error)
             self.trendingMedias = medias
         })
@@ -60,15 +60,15 @@ struct MediaSwimlane: View {
             Text(self.title)
                 .font(.title2)
             ScrollView(.horizontal) {
-                HStack(spacing: 10) {
+                HStack(spacing: 10.0) {
                     ForEach(medias, id: \.uid) { media in
                         MediaCell(media: media)
                     }
                 }
             }
         }
-        .padding(.leading, 10)
-        .padding(.trailing, 10)
+        .padding(.leading, 10.0)
+        .padding(.trailing, 10.0)
     }
 }
 
@@ -77,7 +77,7 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 40) {
+            VStack(spacing: 40.0) {
                 if let medias = model.trendingMedias {
                     MediaSwimlane(title: "Trending", medias: medias)
                 }
