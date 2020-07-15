@@ -5,30 +5,9 @@
 //  Created by Samuel Défago on 13.07.20.
 //
 
-import FetchImage
 import SRGAppearance
 import SRGDataProvider
 import SwiftUI
-
-struct ImageView: View {
-    @ObservedObject var image: FetchImage
-    
-    init(url: URL) {
-        image = FetchImage(url: url)
-    }
-
-    public var body: some View {
-        ZStack {
-            Rectangle().fill(Color.black)
-            image.view?
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-        }
-        .animation(.default)
-        .onAppear(perform: image.fetch)
-        .onDisappear(perform: image.cancel)
-    }
-}
 
 struct MediaCell: View {
     let media: SRGMedia
