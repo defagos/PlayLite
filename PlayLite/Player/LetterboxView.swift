@@ -9,7 +9,7 @@ import SRGLetterbox
 import SwiftUI
 
 struct LetterboxView: UIViewRepresentable {
-    @Binding var controller: SRGLetterboxController?
+    let controller: SRGLetterboxController?
     
     func makeUIView(context: Context) -> SRGLetterboxView {
         return SRGLetterboxView()
@@ -22,7 +22,7 @@ struct LetterboxView: UIViewRepresentable {
 
 struct LetterboxView_Previews: PreviewProvider {
     static var previews: some View {
-        LetterboxView(controller: .constant(nil))
+        LetterboxView(controller: nil)
             .previewLayout(.fixed(width: 480.0, height: 270.0))
     }
 }

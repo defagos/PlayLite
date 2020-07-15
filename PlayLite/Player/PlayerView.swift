@@ -14,7 +14,7 @@ struct PlayerView: View {
     
     var body: some View {
         VStack {
-            LetterboxView(controller: .constant(controller))
+            LetterboxView(controller: controller)
                 .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
             Spacer()
         }
