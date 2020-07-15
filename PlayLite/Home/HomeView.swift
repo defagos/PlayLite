@@ -33,9 +33,18 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            if let medias = model.trending {
-                List(medias, id: \.uid) { media in
-                    MediaCell(media: media)
+            if let medias = model.trendingMedias {
+                VStack {
+                    ScrollView(.horizontal) {
+                        HStack(spacing: 10) {
+                            ForEach(medias, id: \.uid) { media in
+                                MediaCell(media: media)
+                            }
+                        }
+                        .padding(.leading, 10)
+                        .padding(.trailing, 10)
+                    }
+                    Spacer()
                 }
             }
             else {

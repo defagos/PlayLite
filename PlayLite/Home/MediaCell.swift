@@ -24,17 +24,21 @@ struct MediaCell: View {
             if let imageUrl = media.imageURL(for: .height, withValue: 200, type: .default) {
                 ImageView(url: imageUrl)
                     .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                    .layoutPriority(1)
             }
             HStack {
                 VStack(alignment: .leading) {
                     Text(media.title)
                         .font(.headline)
+                        .lineLimit(2)
                     Text(Self.dateFormatter.string(from: media.date))
                         .font(.subheadline)
+                        .layoutPriority(1)
                 }
                 Spacer()
             }
         }
+        .frame(width: 210, height: 190, alignment: .top)
     }
 }
 
