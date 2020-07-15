@@ -9,7 +9,7 @@ import SRGDataProvider
 import SwiftUI
 
 class HomeModel: ObservableObject {
-    @Published private(set) var medias: [SRGMedia]?
+    @Published private(set) var trending: [SRGMedia]?
     private var request: SRGBaseRequest?
     
     init() {
@@ -17,8 +17,8 @@ class HomeModel: ObservableObject {
     }
     
     private func refresh() {
-        request = SRGDataProvider.current?.tvLatestMedias(for: .RTS, withCompletionBlock: { (medias, page, nextPage, response, error) in
-            self.medias = medias
+        request = SRGDataProvider.current?.tvTrendingMedias(for: .RTS, withLimit: 20, completionBlock: { (medias, _, _) in
+            self.trending = medias
         })
         request?.resume()
     }
@@ -33,7 +33,7 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            if let medias = model.medias {
+            if let medias = model.trending {
                 List(medias, id: \.uid) { media in
                     MediaCell(media: media)
                 }

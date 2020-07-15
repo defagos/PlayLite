@@ -46,11 +46,14 @@ struct MediaCell: View {
                 ImageView(url: imageUrl)
                     .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
             }
-            VStack(alignment: .leading) {
-                Text(media.title)
-                    .font(.headline)
-                Text(Self.dateFormatter.string(from: media.date))
-                    .font(.subheadline)
+            HStack {
+                VStack(alignment: .leading) {
+                    Text(media.title)
+                        .font(.headline)
+                    Text(Self.dateFormatter.string(from: media.date))
+                        .font(.subheadline)
+                }
+                Spacer()
             }
         }
     }
