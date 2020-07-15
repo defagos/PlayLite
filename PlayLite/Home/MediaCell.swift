@@ -24,6 +24,7 @@ struct MediaCell: View {
             if let imageUrl = media.imageURL(for: .height, withValue: 200, type: .default) {
                 ImageView(url: imageUrl)
                     .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
+                    .cornerRadius(3.0)
                     .layoutPriority(1)
             }
             HStack {

@@ -58,6 +58,7 @@ struct MediaSwimlane: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(self.title)
+                .font(.title2)
             ScrollView(.horizontal) {
                 HStack(spacing: 10) {
                     ForEach(medias, id: \.uid) { media in
