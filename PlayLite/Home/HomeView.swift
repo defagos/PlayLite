@@ -106,7 +106,10 @@ struct MediaSwimlane: View {
             ScrollView(.horizontal) {
                 HStack(spacing: 10.0) {
                     ForEach(medias, id: \.uid) { media in
-                        MediaCell(media: media)
+                        NavigationLink(destination: PlayerView(urn: media.urn)) {
+                            MediaCell(media: media)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
                 .padding(.leading)
