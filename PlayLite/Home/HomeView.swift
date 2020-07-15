@@ -52,18 +52,22 @@ class HomeModel: ObservableObject {
 }
 
 struct MediaSwimlane: View {
+    let title: String
     let medias: [SRGMedia]
     
     var body: some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: 10) {
-                ForEach(medias, id: \.uid) { media in
-                    MediaCell(media: media)
+        VStack(alignment: .leading) {
+            Text(self.title)
+            ScrollView(.horizontal) {
+                HStack(spacing: 10) {
+                    ForEach(medias, id: \.uid) { media in
+                        MediaCell(media: media)
+                    }
                 }
             }
-            .padding(.leading, 10)
-            .padding(.trailing, 10)
         }
+        .padding(.leading, 10)
+        .padding(.trailing, 10)
     }
 }
 
@@ -71,16 +75,16 @@ struct HomeView: View {
     @StateObject var model = HomeModel()
     
     var body: some View {
-        ZStack {
-            VStack {
+        ScrollView {
+            VStack(spacing: 40) {
                 if let medias = model.trendingMedias {
-                    MediaSwimlane(medias: medias)
+                    MediaSwimlane(title: "Trending", medias: medias)
                 }
                 if let medias = model.mostSeenMedias {
-                    MediaSwimlane(medias: medias)
+                    MediaSwimlane(title: "Most seen", medias: medias)
                 }
                 if let medias = model.soonExpiringMedias {
-                    MediaSwimlane(medias: medias)
+                    MediaSwimlane(title: "Soon expiring", medias: medias)
                 }
                 Spacer()
             }
