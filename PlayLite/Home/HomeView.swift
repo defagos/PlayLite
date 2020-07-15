@@ -8,10 +8,14 @@
 import SRGDataProvider
 import SwiftUI
 
+struct HomeRow: Identifiable {
+    let id: String
+    let title: String
+    let medias: [SRGMedia]
+}
+
 class HomeModel: ObservableObject {
-    @Published private(set) var trendingMedias: [SRGMedia]?
-    @Published private(set) var mostSeenMedias: [SRGMedia]?
-    @Published private(set) var soonExpiringMedias: [SRGMedia]?
+    @Published private(set) var rows: [HomeRow] = []
     
     private let requestQueue: SRGRequestQueue
     
@@ -20,30 +24,46 @@ class HomeModel: ObservableObject {
         self.refresh()
     }
     
+    private func loadTrendingMedias() {
+        if let request = SRGDataProvider.current?.tvTrendingMedias(for: .RTS, withLimit: 20, editorialLimit: 3, episodesOnly: false, completionBlock: { (medias, _, error) in
+            self.requestQueue.reportError(error)
+            
+            if let medias = medias {
+                self.rows.append(HomeRow(id: "trending", title: "Trending now", medias: medias))
+            }
+        }) {
+            self.requestQueue.add(request, resume: true)
+        }
+    }
+    
+    private func loadMostSeenMedias() {
+        if let request = SRGDataProvider.current?.tvMostPopularMedias(for: .RTS, withCompletionBlock: { (medias, _, _, _, error) in
+            self.requestQueue.reportError(error)
+            
+            if let medias = medias {
+                self.rows.append(HomeRow(id: "popular", title: "Most popular", medias: medias))
+            }
+        }).withPageSize(20) {
+            self.requestQueue.add(request, resume: true)
+        }
+    }
+    
+    private func loadSoonExpiringMedias() {
+        if let request = SRGDataProvider.current?.tvSoonExpiringMedias(for: .RTS, withCompletionBlock: { (medias, _, _, _, error) in
+            self.requestQueue.reportError(error)
+            
+            if let medias = medias {
+                self.rows.append(HomeRow(id: "expiring", title: "Soon expiring", medias: medias))
+            }
+        }) {
+            self.requestQueue.add(request, resume: true)
+        }
+    }
+    
     private func refresh() {
-        let trendingMediasRequest = SRGDataProvider.current?.tvTrendingMedias(for: .RTS, withLimit: 20, editorialLimit: 3, episodesOnly: false, completionBlock: { (medias, _, error) in
-            self.requestQueue.reportError(error)
-            self.trendingMedias = medias
-        })
-        if let trendingMediasRequest = trendingMediasRequest {
-            self.requestQueue.add(trendingMediasRequest, resume: true)
-        }
-        
-        let mostSeenMediasRequest = SRGDataProvider.current?.tvMostPopularMedias(for: .RTS, withCompletionBlock: { (medias, _, _, _, error) in
-            self.requestQueue.reportError(error)
-            self.mostSeenMedias = medias
-        }).withPageSize(20)
-        if let mostSeenMediasRequest = mostSeenMediasRequest {
-            self.requestQueue.add(mostSeenMediasRequest, resume: true)
-        }
-        
-        let soonExpiringMediasRequest = SRGDataProvider.current?.tvSoonExpiringMedias(for: .RTS, withCompletionBlock: { (medias, _, _, _, error) in
-            self.requestQueue.reportError(error)
-            self.soonExpiringMedias = medias
-        })
-        if let soonExpiringMediasRequest = soonExpiringMediasRequest {
-            self.requestQueue.add(soonExpiringMediasRequest, resume: true)
-        }
+        loadTrendingMedias()
+        loadMostSeenMedias()
+        loadSoonExpiringMedias()
     }
     
     deinit {
@@ -78,14 +98,8 @@ struct HomeView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 40.0) {
-                if let medias = model.trendingMedias {
-                    MediaSwimlane(title: "Trending", medias: medias)
-                }
-                if let medias = model.mostSeenMedias {
-                    MediaSwimlane(title: "Most seen", medias: medias)
-                }
-                if let medias = model.soonExpiringMedias {
-                    MediaSwimlane(title: "Soon expiring", medias: medias)
+                ForEach(model.rows) { row in
+                    MediaSwimlane(title: row.title, medias: row.medias)
                 }
                 Spacer()
             }
