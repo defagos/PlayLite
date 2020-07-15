@@ -9,22 +9,32 @@ import FetchImage
 import SwiftUI
 
 struct ImageView: View {
-    @ObservedObject var image: FetchImage
-    
-    init(url: URL) {
-        image = FetchImage(url: url)
-    }
+    private struct FetchView: View {
+        @ObservedObject var image: FetchImage
+        
+        init(url: URL) {
+            image = FetchImage(url: url)
+        }
 
-    public var body: some View {
-        ZStack {
-            Rectangle().fill(Color.black)
+        public var body: some View {
             image.view?
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .animation(.default)
+                .onAppear(perform: image.fetch)
+                .onDisappear(perform: image.cancel)
         }
-        .animation(.default)
-        .onAppear(perform: image.fetch)
-        .onDisappear(perform: image.cancel)
+    }
+    
+    let url: URL?
+    
+    var body: some View {
+        ZStack {
+            Rectangle()
+                .fill(Color.black)
+            if let url = url {
+                FetchView(url: url)
+            }
+        }
     }
 }
-
