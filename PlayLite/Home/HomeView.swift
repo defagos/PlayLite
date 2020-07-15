@@ -126,6 +126,7 @@ struct HomeView: View {
                 Spacer()
             }
         }
+        .navigationTitle("Videos")
     }
 }
 
