@@ -2,28 +2,20 @@
 //  PlayerView.swift
 //  PlayLite
 //
-//  Created by Samuel Défago on 15.07.20.
+//  Created by Samuel Défago on 16.07.20.
 //
 
-import SRGLetterbox
 import SwiftUI
 
-struct PlayerView: View {
-    let urn: String
-    private let controller = SRGLetterboxController()
+struct PlayerView: UIViewControllerRepresentable {
+    let urn: String?
     
-    var body: some View {
-        VStack {
-            LetterboxView(controller: controller)
-                .aspectRatio(CGSize(width: 16, height: 9), contentMode: .fit)
-            Spacer()
-        }
-        .onAppear {
-            controller.playURN(urn, at: nil, withPreferredSettings: nil)
-        }
-        .onDisappear {
-            controller.reset()
-        }
+    func makeUIViewController(context: Context) -> some UIViewController {
+        return PlayerViewController(urn: self.urn)
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
     }
 }
 
