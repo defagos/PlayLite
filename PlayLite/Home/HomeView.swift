@@ -101,16 +101,21 @@ struct MediaSwimlane: View {
         VStack(alignment: .leading) {
             Text(self.title)
                 .font(.title2)
+                .padding(.leading)
+                .padding(.trailing)
             ScrollView(.horizontal) {
                 HStack(spacing: 10.0) {
                     ForEach(medias, id: \.uid) { media in
-                        MediaCell(media: media)
+                        NavigationLink(destination: PlayerView(urn: media.urn)) {
+                            MediaCell(media: media)
+                        }
+                        .buttonStyle(PlainButtonStyle())
                     }
                 }
+                .padding(.leading)
+                .padding(.trailing)
             }
         }
-        .padding(.leading, 10.0)
-        .padding(.trailing, 10.0)
     }
 }
 
@@ -125,7 +130,9 @@ struct HomeView: View {
                 }
                 Spacer()
             }
+            .padding(.top)
         }
+        .navigationTitle("Videos")
     }
 }
 
