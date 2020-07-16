@@ -21,6 +21,6 @@ struct PlayerView: UIViewControllerRepresentable {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(urn: "urn:rts:video:11460386")
+        PlayerView(urn: nil)
     }
 }

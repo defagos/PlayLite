@@ -6,6 +6,7 @@
 //
 
 import SRGLetterbox
+import SwiftUI
 import UIKit
 
 class PlayerViewController: UIViewController {
@@ -48,6 +49,21 @@ class PlayerViewController: UIViewController {
             aspectRatioConstraint
         ])
         self.aspectRatioConstraint = aspectRatioConstraint
+        
+        let infoViewController = UIHostingController(rootView: PlayerInfoView())
+        addChild(infoViewController)
+        infoViewController.didMove(toParent: self)
+        
+        let infoView = infoViewController.view!
+        infoView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(infoView)
+        
+        NSLayoutConstraint.activate([
+            infoView.topAnchor.constraint(equalTo: letterboxView.bottomAnchor),
+            infoView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            infoView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            infoView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,5 +84,11 @@ extension PlayerViewController: SRGLetterboxViewDelegate {
             self.aspectRatioConstraint = self.aspectRatioConstraint?.srg_replacementConstraint(withMultiplier: 1.0 / aspectRatio, constant: heightOffset)
             self.view.layoutIfNeeded()
         } completion: { _ in }
+    }
+}
+
+struct PlayerViewController_Previews: PreviewProvider {
+    static var previews: some View {
+        PlayerView(urn: nil)
     }
 }
