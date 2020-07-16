@@ -40,8 +40,9 @@ struct PlayerInfoView: View {
     }
     
     var body: some View {
-        if let title = data.mainMedia?.title {
-            Text(title)
+        if let media = data.mainMedia {
+            MediaInfoView(media: media)
+                .padding()
         }
     }
 }
