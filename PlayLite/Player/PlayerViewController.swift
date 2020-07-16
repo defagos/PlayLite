@@ -50,7 +50,7 @@ class PlayerViewController: UIViewController {
         ])
         self.aspectRatioConstraint = aspectRatioConstraint
         
-        let infoViewController = UIHostingController(rootView: PlayerInfoView())
+        let infoViewController = UIHostingController(rootView: PlayerInfoView(controller: controller))
         addChild(infoViewController)
         infoViewController.didMove(toParent: self)
         
