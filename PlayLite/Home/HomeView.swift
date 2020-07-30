@@ -20,7 +20,7 @@ class HomeModel: ObservableObject {
     private let requestQueue: SRGRequestQueue
     
     init() {
-        self.requestQueue = SRGRequestQueue.init()
+        self.requestQueue = SRGRequestQueue()
         self.refresh()
     }
     

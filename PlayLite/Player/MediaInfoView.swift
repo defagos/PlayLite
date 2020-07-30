@@ -69,6 +69,7 @@ struct MediaInfoView_Previews: PreviewProvider {
     static var previews: some View {
         if let media = sampleMedias?.first {
             MediaInfoView(media: media)
+                .padding()
         }
     }
 }
