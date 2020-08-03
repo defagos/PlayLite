@@ -7,86 +7,78 @@
 
 import Combine
 import SRGDataProvider
+import SRGDataProviderCombine
 import SwiftUI
 
-struct HomeRow: Identifiable {
-    let id: String
-    let title: String
-    let medias: [SRGMedia]
+class HomeRow: ObservableObject, Identifiable {
+    enum Id {
+        case trending
+        case latest
+    }
+    
+    let id: Id
+    
+    var title: String {
+        switch id {
+            case .trending:
+                return "Trending now"
+            case .latest:
+                return "Latest videos"
+        }
+    }
+    
+    func load() -> AnyCancellable {
+        let dataProvider = SRGDataProvider.current!
+        switch id {
+            case .trending:
+                return dataProvider.tvTrendingMedias(for: .RTS)
+                    .map { $0.0 }
+                    .replaceError(with: [])
+                    .receive(on: DispatchQueue.main)
+                    .assign(to: \.medias, on: self)
+            case .latest:
+                return dataProvider.tvLatestMedias(for: .RTS)
+                    .map { $0.0 }
+                    .replaceError(with: [])
+                    .receive(on: DispatchQueue.main)
+                    .assign(to: \.medias, on: self)
+        }
+    }
+    
+    @Published var medias: [SRGMedia] = []
+    
+    init(id: Id) {
+        self.id = id
+    }
 }
 
 class HomeModel: ObservableObject {
-    @Published private(set) var rows: [HomeRow] = []
-    var cancellable: AnyCancellable?
+    @Published private(set) var rows: [HomeRow] = {
+        let trendingRow = HomeRow(id: .trending)
+        let latestRow = HomeRow(id: .latest)
+        return [trendingRow, latestRow]
+    }()
+    var cancellables = Set<AnyCancellable>()
     
     func refresh() {
-        cancellable = Publishers.CombineLatest3(trendingMedias(), mostPopularMedias(), soonExpiringMedias())
-            .map { combined -> [HomeRow] in
-                let trendingRow = HomeRow(id: "trending", title: "Trending now", medias: combined.0)
-                let mostPopularRow = HomeRow(id: "popular", title: "Most popular", medias: combined.1)
-                let soonExpiringRow = HomeRow(id: "expiring", title: "Soon expiring", medias: combined.2)
-                return [trendingRow, mostPopularRow, soonExpiringRow]
-            }
-            .replaceError(with: [])
-            .assign(to: \.rows, on: self)
-    }
-    
-    private func trendingMedias() -> Future<[SRGMedia], Error> {
-        return Future { promise in
-            let request = SRGDataProvider.current!.tvTrendingMedias(for: .RTS, withLimit: 20, editorialLimit: 3, episodesOnly: false) { medias, _, error in
-                if let error = error {
-                    promise(.failure(error))
-                }
-                else {
-                    promise(.success(medias!))
-                }
-            }
-            request.resume()
-        }
-    }
-    
-    private func mostPopularMedias() -> Future<[SRGMedia], Error> {
-        return Future { promise in
-            let request = SRGDataProvider.current!.tvMostPopularMedias(for: .RTS) { medias, _, _, _, error in
-                if let error = error {
-                    promise(.failure(error))
-                }
-                else {
-                    promise(.success(medias!))
-                }
-            }
-            request.resume()
-        }
-    }
-    
-    private func soonExpiringMedias() -> Future<[SRGMedia], Error> {
-        return Future { promise in
-            let request = SRGDataProvider.current!.tvSoonExpiringMedias(for: .RTS) { medias, _, _, _, error in
-                if let error = error {
-                    promise(.failure(error))
-                }
-                else {
-                    promise(.success(medias!))
-                }
-            }
-            request.resume()
+        for row in rows {
+            cancellables.insert(row.load())
         }
     }
 }
 
 struct MediaSwimlane: View {
-    let title: String
-    let medias: [SRGMedia]
+    @ObservedObject var row: HomeRow
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.title)
+            Text(row.title)
                 .font(.title2)
                 .padding(.leading)
                 .padding(.trailing)
             ScrollView(.horizontal) {
                 HStack(spacing: 10.0) {
-                    ForEach(medias, id: \.uid) { media in
+                    ForEach(row.medias, id: \.uid) { media in
                         NavigationLink(destination: PlayerView(urn: media.urn)) {
                             MediaCell(media: media)
                         }
@@ -107,7 +99,7 @@ struct HomeView: View {
         ScrollView {
             VStack(spacing: 40.0) {
                 ForEach(model.rows) { row in
-                    MediaSwimlane(title: row.title, medias: row.medias)
+                    MediaSwimlane(row: row)
                 }
                 Spacer()
             }
