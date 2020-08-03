@@ -61,10 +61,15 @@ struct MediaCell: View {
         return media?.imageURL(for: .height, withValue: 200.0, type: .default)
     }
     
+    private var isPlaceholder: Bool {
+        return media == nil
+    }
+    
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
                 ImageView(url: imageUrl)
+                    .whenRedacted { $0.hidden() }
                     .aspectRatio(CGSize(width: 16.0, height: 9.0), contentMode: .fit)
                     .cornerRadius(3.0)
                     .layoutPriority(1)
@@ -88,6 +93,7 @@ struct MediaCell: View {
                 Spacer()
             }
         }
+        .redacted(reason: isPlaceholder ? .placeholder : .init())
         .frame(width: 210.0, height: 190.0, alignment: .top)
     }
 }
