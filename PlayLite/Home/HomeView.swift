@@ -5,107 +5,146 @@
 //  Created by Samuel Défago on 13.07.20.
 //
 
+import Combine
 import SRGDataProvider
+import SRGDataProviderCombine
 import SwiftUI
 
-struct HomeRow: Identifiable {
-    let id: String
-    let title: String
-    let medias: [SRGMedia]
+class HomeRow: ObservableObject, Identifiable {
+    enum Id : Equatable {
+        case trending
+        case latest
+        case topics
+        case latestForTopic(_ topic: SRGTopic)
+    }
+    
+    let id: Id
+    
+    var title: String {
+        switch id {
+            case .trending:
+                return "Trending now"
+            case .latest:
+                return "Latest videos"
+            case .topics:
+                return "Topics"
+            case let .latestForTopic(topic):
+                return topic.title
+        }
+    }
+    
+    func load() -> AnyCancellable? {
+        let dataProvider = SRGDataProvider.current!
+        switch id {
+            case .trending:
+                return dataProvider.tvTrendingMedias(for: .RTS)
+                    .map { $0.0 }
+                    .replaceError(with: [])
+                    .receive(on: DispatchQueue.main)
+                    .assign(to: \.medias, on: self)
+            case .latest:
+                return dataProvider.tvLatestMedias(for: .RTS)
+                    .map { $0.0 }
+                    .replaceError(with: [])
+                    .receive(on: DispatchQueue.main)
+                    .assign(to: \.medias, on: self)
+            case .topics:
+                return nil
+            case let .latestForTopic(topic):
+                return dataProvider.latestMediasForTopic(withUrn: topic.urn)
+                    .map { $0.0 }
+                    .replaceError(with: [])
+                    .receive(on: DispatchQueue.main)
+                    .assign(to: \.medias, on: self)
+        }
+    }
+    
+    @Published var medias: [SRGMedia] = []
+    
+    init(id: Id) {
+        self.id = id
+    }
 }
 
 class HomeModel: ObservableObject {
-    @Published private(set) var rows: [HomeRow] = []
+    private static let rowIds: [HomeRow.Id] = [.trending, .latest, .topics]
     
-    private let requestQueue: SRGRequestQueue
+    @Published private(set) var rows = [HomeRow]()
+    var cancellables = Set<AnyCancellable>()
     
-    init() {
-        self.requestQueue = SRGRequestQueue()
-        self.refresh()
+    func findRow(id: HomeRow.Id) -> HomeRow? {
+        return rows.first(where: { $0.id == id })
     }
     
-    private func loadTrendingMedias() {
-        if let request = SRGDataProvider.current?.tvTrendingMedias(for: .RTS, withLimit: 20, editorialLimit: 3, episodesOnly: false, completionBlock: { (medias, _, error) in
-            self.requestQueue.reportError(error)
-            
-            if let medias = medias {
-                self.rows.append(HomeRow(id: "trending", title: "Trending now", medias: medias))
-            }
-        }) {
-            self.requestQueue.add(request, resume: true)
-        }
-    }
-    
-    private func loadMostSeenMedias() {
-        if let request = SRGDataProvider.current?.tvMostPopularMedias(for: .RTS, withCompletionBlock: { (medias, _, _, _, error) in
-            self.requestQueue.reportError(error)
-            
-            if let medias = medias {
-                self.rows.append(HomeRow(id: "popular", title: "Most popular", medias: medias))
-            }
-        }).withPageSize(20) {
-            self.requestQueue.add(request, resume: true)
-        }
-    }
-    
-    private func loadSoonExpiringMedias() {
-        if let request = SRGDataProvider.current?.tvSoonExpiringMedias(for: .RTS, withCompletionBlock: { (medias, _, _, _, error) in
-            self.requestQueue.reportError(error)
-            
-            if let medias = medias {
-                self.rows.append(HomeRow(id: "expiring", title: "Soon expiring", medias: medias))
-            }
-        }).withPageSize(20) {
-            self.requestQueue.add(request, resume: true)
-        }
-    }
-    
-    private func loadTopicsMedias() {
-        if let request = SRGDataProvider.current?.tvTopics(for: .RTS, withCompletionBlock: { (topics, _, error) in
-            self.requestQueue.reportError(error)
-            
-            topics?.forEach { topic in
-                if let request = SRGDataProvider.current?.latestMediasForTopic(withURN: topic.urn, completionBlock: { (medias, _, _, _, error) in
-                    self.requestQueue.reportError(error)
-                    
-                    if let medias = medias {
-                        self.rows.append(HomeRow(id: topic.urn, title: topic.title, medias: medias))
+    func updateRows(topicRows: [HomeRow] = []) {
+        var updatedRows = [HomeRow]()
+        
+        for id in Self.rowIds {
+            if id == .topics {
+                for row in topicRows {
+                    if let existingRow = findRow(id: row.id) {
+                        updatedRows.append(existingRow)
                     }
-                }).withPageSize(20) {
-                    self.requestQueue.add(request, resume: true)
+                    else {
+                        updatedRows.append(row)
+                    }
                 }
             }
-        }) {
-            self.requestQueue.add(request, resume: true)
+            else {
+                if let existingRow = findRow(id: id) {
+                    updatedRows.append(existingRow)
+                }
+                else {
+                    updatedRows.append(HomeRow(id: id))
+                }
+            }
+        }
+        
+        rows = updatedRows
+    }
+    
+    init() {
+        updateRows()
+    }
+    
+    func refresh(rows: [HomeRow]) {
+        for row in rows {
+            if let cancellable = row.load() {
+                cancellables.insert(cancellable)
+            }
         }
     }
     
-    // FIXME: Order is not guaranteed
-    private func refresh() {
-        loadTrendingMedias()
-        loadMostSeenMedias()
-        loadSoonExpiringMedias()
-        loadTopicsMedias()
-    }
-    
-    deinit {
-        self.requestQueue.cancel()
+    func refresh() {
+        cancellables = []
+        self.refresh(rows: rows)
+        
+        SRGDataProvider.current!.tvTopics(for: .RTS)
+            .map {
+                return $0.0.map { HomeRow(id: .latestForTopic($0)) }
+            }
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .sink { topicRows in
+                self.updateRows(topicRows: topicRows)
+                self.refresh(rows: topicRows)
+            }
+            .store(in: &cancellables)
     }
 }
 
 struct MediaSwimlane: View {
-    let title: String
-    let medias: [SRGMedia]
+    @ObservedObject var row: HomeRow
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text(self.title)
+            Text(row.title)
                 .font(.title2)
                 .padding(.leading)
                 .padding(.trailing)
             ScrollView(.horizontal) {
                 HStack(spacing: 10.0) {
-                    ForEach(medias, id: \.uid) { media in
+                    ForEach(row.medias, id: \.uid) { media in
                         NavigationLink(destination: PlayerView(urn: media.urn)) {
                             MediaCell(media: media)
                         }
@@ -126,13 +165,16 @@ struct HomeView: View {
         ScrollView {
             VStack(spacing: 40.0) {
                 ForEach(model.rows) { row in
-                    MediaSwimlane(title: row.title, medias: row.medias)
+                    MediaSwimlane(row: row)
                 }
                 Spacer()
             }
             .padding(.top)
         }
         .navigationTitle("Videos")
+        .onAppear {
+            model.refresh()
+        }
     }
 }
 

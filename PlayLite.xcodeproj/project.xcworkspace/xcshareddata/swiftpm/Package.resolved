@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "ComScore",
+        "repositoryURL": "https://github.com/SRGSSR/ComScore-xcframework-apple.git",
+        "state": {
+          "branch": null,
+          "revision": "86bc427330768e5803ae98d39d8a3d756d01bc9d",
+          "version": "6.5.0"
+        }
+      },
+      {
         "package": "FetchImage",
         "repositoryURL": "https://github.com/kean/FetchImage.git",
         "state": {
@@ -11,12 +20,174 @@
         }
       },
       {
+        "package": "FXReachability",
+        "repositoryURL": "https://github.com/SRGSSR/FXReachability.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "1eac916df0045630e779fa60eef22ed0d185e15f",
+          "version": null
+        }
+      },
+      {
+        "package": "libextobjc",
+        "repositoryURL": "https://github.com/SRGSSR/libextobjc.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "30ee5b73bdf57a826978aa146881277f22369be1",
+          "version": null
+        }
+      },
+      {
+        "package": "MAKVONotificationCenter",
+        "repositoryURL": "https://github.com/SRGSSR/MAKVONotificationCenter.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "60395e0601ffd4a784856b423d4cac558366276d",
+          "version": null
+        }
+      },
+      {
+        "package": "Mantle",
+        "repositoryURL": "https://github.com/SRGSSR/Mantle.git",
+        "state": {
+          "branch": "swift-package-manager-support",
+          "revision": "cd18bf7f9c6c5a0d2f4aec6012fe1615b86032fe",
+          "version": null
+        }
+      },
+      {
         "package": "Nuke",
         "repositoryURL": "https://github.com/kean/Nuke.git",
         "state": {
           "branch": null,
           "revision": "998588c80611e4fe9b71dd4323fa938ee62f4ff7",
           "version": "9.1.1"
+        }
+      },
+      {
+        "package": "SRGAnalytics",
+        "repositoryURL": "https://github.com/SRGSSR/srganalytics-apple.git",
+        "state": {
+          "branch": "combine-support",
+          "revision": "8bf2869f3241332d6b698859f8d78d0200e4997e",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGAppearance",
+        "repositoryURL": "https://github.com/SRGSSR/srgappearance-apple.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "1de76c7c2349878195725a563dd03c4b3ac5e8ed",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGContentProtection",
+        "repositoryURL": "https://github.com/SRGSSR/srgcontentprotection-apple.git",
+        "state": {
+          "branch": "combine-support",
+          "revision": "2785ac520035c429fbc386ae0797d1bc895c3106",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGDataProvider",
+        "repositoryURL": "https://github.com/SRGSSR/srgdataprovider-apple.git",
+        "state": {
+          "branch": "combine-support",
+          "revision": "088dc188dd553e5f3e42c81b1ebd92de837109ab",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGDiagnostics",
+        "repositoryURL": "https://github.com/SRGSSR/srgdiagnostics-apple.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "16584a136f60fcb1c55167548276bfee4a594d6a",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGIdentity",
+        "repositoryURL": "https://github.com/SRGSSR/srgidentity-apple.git",
+        "state": {
+          "branch": "combine-support",
+          "revision": "f35ad83e05fc65dafb8fe5bf3dcd889fc7867780",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGLetterbox",
+        "repositoryURL": "https://github.com/SRGSSR/srgletterbox-apple.git",
+        "state": {
+          "branch": "combine-support",
+          "revision": "50c7ad65d560cd68f81e90ad207e266e84ae42f5",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGLogger",
+        "repositoryURL": "https://github.com/SRGSSR/srglogger-apple.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "f362dff71515f75ebe098f993d6951af067516fa",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGMediaPlayer",
+        "repositoryURL": "https://github.com/SRGSSR/srgmediaplayer-apple.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "d25678d7ce9bce76d86ea783812265b74f89c187",
+          "version": null
+        }
+      },
+      {
+        "package": "SRGNetwork",
+        "repositoryURL": "https://github.com/SRGSSR/srgnetwork-apple.git",
+        "state": {
+          "branch": "combine-support",
+          "revision": "581bd9ce01184ae2b0d98dd2034087de1c3dd462",
+          "version": null
+        }
+      },
+      {
+        "package": "TCCore",
+        "repositoryURL": "https://github.com/SRGSSR/TCCore-xcframework-apple.git",
+        "state": {
+          "branch": null,
+          "revision": "be5774e8e68bbf29a9da93506e6bfa6de1177268",
+          "version": "4.5.4-srg3"
+        }
+      },
+      {
+        "package": "TCSDK",
+        "repositoryURL": "https://github.com/SRGSSR/TCSDK-xcframework-apple.git",
+        "state": {
+          "branch": null,
+          "revision": "391dbdc47db04f4049fdabca6b5d1f5446589d3f",
+          "version": "4.4.1-srg3"
+        }
+      },
+      {
+        "package": "UICKeyChainStore",
+        "repositoryURL": "https://github.com/kishikawakatsumi/UICKeyChainStore.git",
+        "state": {
+          "branch": null,
+          "revision": "2f0380d539ec53b66eef211b3c983749ad9e2686",
+          "version": "2.2.0"
+        }
+      },
+      {
+        "package": "YYWebImage",
+        "repositoryURL": "https://github.com/SRGSSR/YYWebImage.git",
+        "state": {
+          "branch": "feature/spm-support",
+          "revision": "f7408c97fd0e897e1bb8b3e8b01e0c8e9dc22123",
+          "version": null
         }
       }
     ]
