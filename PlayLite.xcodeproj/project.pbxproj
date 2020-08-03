@@ -15,50 +15,13 @@
 		6F3DAC7A24BC6A9A00BF5B20 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6F3DAC7824BC6A9A00BF5B20 /* LaunchScreen.storyboard */; };
 		6F3DAC8524BC6A9B00BF5B20 /* PlayLiteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DAC8424BC6A9B00BF5B20 /* PlayLiteTests.swift */; };
 		6F3DAC9024BC6A9B00BF5B20 /* PlayLiteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DAC8F24BC6A9B00BF5B20 /* PlayLiteUITests.swift */; };
-		6F3DACB024BC786400BF5B20 /* ComScore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA624BC784C00BF5B20 /* ComScore.framework */; };
-		6F3DACB124BC786400BF5B20 /* ComScore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA624BC784C00BF5B20 /* ComScore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACB224BC786400BF5B20 /* FXReachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA224BC784C00BF5B20 /* FXReachability.framework */; };
-		6F3DACB324BC786400BF5B20 /* FXReachability.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA224BC784C00BF5B20 /* FXReachability.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACB424BC786400BF5B20 /* libextobjc.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA924BC784C00BF5B20 /* libextobjc.framework */; };
-		6F3DACB524BC786400BF5B20 /* libextobjc.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA924BC784C00BF5B20 /* libextobjc.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACB624BC786400BF5B20 /* MAKVONotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAB24BC784C00BF5B20 /* MAKVONotificationCenter.framework */; };
-		6F3DACB724BC786400BF5B20 /* MAKVONotificationCenter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAB24BC784C00BF5B20 /* MAKVONotificationCenter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACB824BC786400BF5B20 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA524BC784C00BF5B20 /* Mantle.framework */; };
-		6F3DACB924BC786400BF5B20 /* Mantle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA524BC784C00BF5B20 /* Mantle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACBB24BC787F00BF5B20 /* SRGAnalytics_DataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA424BC784C00BF5B20 /* SRGAnalytics_DataProvider.framework */; };
-		6F3DACBC24BC787F00BF5B20 /* SRGAnalytics_DataProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA424BC784C00BF5B20 /* SRGAnalytics_DataProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACBD24BC787F00BF5B20 /* SRGAnalytics_MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAC24BC784C00BF5B20 /* SRGAnalytics_MediaPlayer.framework */; };
-		6F3DACBE24BC787F00BF5B20 /* SRGAnalytics_MediaPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAC24BC784C00BF5B20 /* SRGAnalytics_MediaPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACBF24BC787F00BF5B20 /* SRGAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA124BC784C00BF5B20 /* SRGAnalytics.framework */; };
-		6F3DACC024BC787F00BF5B20 /* SRGAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA124BC784C00BF5B20 /* SRGAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACC124BC787F00BF5B20 /* SRGAppearance.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAE24BC784C00BF5B20 /* SRGAppearance.framework */; };
-		6F3DACC224BC787F00BF5B20 /* SRGAppearance.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAE24BC784C00BF5B20 /* SRGAppearance.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACC324BC788000BF5B20 /* SRGContentProtection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA724BC784C00BF5B20 /* SRGContentProtection.framework */; };
-		6F3DACC424BC788000BF5B20 /* SRGContentProtection.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA724BC784C00BF5B20 /* SRGContentProtection.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACC524BC788000BF5B20 /* SRGDataProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DAC9F24BC784C00BF5B20 /* SRGDataProvider.framework */; };
-		6F3DACC624BC788000BF5B20 /* SRGDataProvider.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DAC9F24BC784C00BF5B20 /* SRGDataProvider.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACC724BC788000BF5B20 /* SRGDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAD24BC784C00BF5B20 /* SRGDiagnostics.framework */; };
-		6F3DACC824BC788000BF5B20 /* SRGDiagnostics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAD24BC784C00BF5B20 /* SRGDiagnostics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACC924BC788000BF5B20 /* SRGLetterbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAF24BC784C00BF5B20 /* SRGLetterbox.framework */; };
-		6F3DACCA24BC788000BF5B20 /* SRGLetterbox.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACAF24BC784C00BF5B20 /* SRGLetterbox.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACCB24BC788000BF5B20 /* SRGLogger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA824BC784C00BF5B20 /* SRGLogger.framework */; };
-		6F3DACCC24BC788000BF5B20 /* SRGLogger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA824BC784C00BF5B20 /* SRGLogger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACCD24BC788000BF5B20 /* SRGMediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DAC9E24BC784B00BF5B20 /* SRGMediaPlayer.framework */; };
-		6F3DACCE24BC788000BF5B20 /* SRGMediaPlayer.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DAC9E24BC784B00BF5B20 /* SRGMediaPlayer.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACCF24BC788000BF5B20 /* TCCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA324BC784C00BF5B20 /* TCCore.framework */; };
-		6F3DACD024BC788000BF5B20 /* TCCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA324BC784C00BF5B20 /* TCCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACD124BC788000BF5B20 /* TCSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA024BC784C00BF5B20 /* TCSDK.framework */; };
-		6F3DACD224BC788000BF5B20 /* TCSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACA024BC784C00BF5B20 /* TCSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACD524BC788000BF5B20 /* SRGNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD324BC788000BF5B20 /* SRGNetwork.framework */; };
-		6F3DACD624BC788100BF5B20 /* SRGNetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD324BC788000BF5B20 /* SRGNetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6F3DACD724BC788100BF5B20 /* YYWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD424BC788000BF5B20 /* YYWebImage.framework */; };
-		6F3DACD824BC788100BF5B20 /* YYWebImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6F3DACD424BC788000BF5B20 /* YYWebImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6F3DACDC24BC87C700BF5B20 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DACDB24BC87C700BF5B20 /* MediaCell.swift */; };
 		6F3DAD1924BDBEFB00BF5B20 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6F3DAD1824BDBEFB00BF5B20 /* FetchImage */; };
 		6F3DAD1C24BDBF0800BF5B20 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6F3DAD1B24BDBF0800BF5B20 /* Nuke */; };
 		6F50E7C524C0593F00344B84 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50E7C424C0593F00344B84 /* PlayerViewController.swift */; };
 		6F50E7C724C05D8400344B84 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50E7C624C05D8400344B84 /* PlayerView.swift */; };
 		6F50E7C924C0781A00344B84 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50E7C824C0781A00344B84 /* PlayerInfoView.swift */; };
+		6F9F216524D7EC0D00068258 /* SRGLetterbox in Frameworks */ = {isa = PBXBuildFile; productRef = 6F9F216424D7EC0D00068258 /* SRGLetterbox */; };
 		6FE7F53F24BEE6A5006A5244 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE7F53E24BEE6A5006A5244 /* ImageView.swift */; };
 		6FF6042124C0900300D37895 /* MediaInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF6042024C0900200D37895 /* MediaInfoView.swift */; };
 /* End PBXBuildFile section */
@@ -79,38 +42,6 @@
 			remoteInfo = PlayLite;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6F3DACBA24BC786400BF5B20 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6F3DACCE24BC788000BF5B20 /* SRGMediaPlayer.framework in Embed Frameworks */,
-				6F3DACBE24BC787F00BF5B20 /* SRGAnalytics_MediaPlayer.framework in Embed Frameworks */,
-				6F3DACD824BC788100BF5B20 /* YYWebImage.framework in Embed Frameworks */,
-				6F3DACB124BC786400BF5B20 /* ComScore.framework in Embed Frameworks */,
-				6F3DACC624BC788000BF5B20 /* SRGDataProvider.framework in Embed Frameworks */,
-				6F3DACD624BC788100BF5B20 /* SRGNetwork.framework in Embed Frameworks */,
-				6F3DACC224BC787F00BF5B20 /* SRGAppearance.framework in Embed Frameworks */,
-				6F3DACC824BC788000BF5B20 /* SRGDiagnostics.framework in Embed Frameworks */,
-				6F3DACBC24BC787F00BF5B20 /* SRGAnalytics_DataProvider.framework in Embed Frameworks */,
-				6F3DACB924BC786400BF5B20 /* Mantle.framework in Embed Frameworks */,
-				6F3DACB724BC786400BF5B20 /* MAKVONotificationCenter.framework in Embed Frameworks */,
-				6F3DACD224BC788000BF5B20 /* TCSDK.framework in Embed Frameworks */,
-				6F3DACB524BC786400BF5B20 /* libextobjc.framework in Embed Frameworks */,
-				6F3DACCA24BC788000BF5B20 /* SRGLetterbox.framework in Embed Frameworks */,
-				6F3DACC024BC787F00BF5B20 /* SRGAnalytics.framework in Embed Frameworks */,
-				6F3DACD024BC788000BF5B20 /* TCCore.framework in Embed Frameworks */,
-				6F3DACC424BC788000BF5B20 /* SRGContentProtection.framework in Embed Frameworks */,
-				6F3DACB324BC786400BF5B20 /* FXReachability.framework in Embed Frameworks */,
-				6F3DACCC24BC788000BF5B20 /* SRGLogger.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		6F3DAC6A24BC6A9800BF5B20 /* PlayLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,27 +91,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F3DACCD24BC788000BF5B20 /* SRGMediaPlayer.framework in Frameworks */,
-				6F3DACBD24BC787F00BF5B20 /* SRGAnalytics_MediaPlayer.framework in Frameworks */,
-				6F3DACD724BC788100BF5B20 /* YYWebImage.framework in Frameworks */,
-				6F3DACB024BC786400BF5B20 /* ComScore.framework in Frameworks */,
-				6F3DACC524BC788000BF5B20 /* SRGDataProvider.framework in Frameworks */,
-				6F3DACD524BC788000BF5B20 /* SRGNetwork.framework in Frameworks */,
-				6F3DACC124BC787F00BF5B20 /* SRGAppearance.framework in Frameworks */,
-				6F3DACC724BC788000BF5B20 /* SRGDiagnostics.framework in Frameworks */,
-				6F3DACBB24BC787F00BF5B20 /* SRGAnalytics_DataProvider.framework in Frameworks */,
+				6F9F216524D7EC0D00068258 /* SRGLetterbox in Frameworks */,
 				6F3DAD1C24BDBF0800BF5B20 /* Nuke in Frameworks */,
-				6F3DACB824BC786400BF5B20 /* Mantle.framework in Frameworks */,
-				6F3DACB624BC786400BF5B20 /* MAKVONotificationCenter.framework in Frameworks */,
-				6F3DACD124BC788000BF5B20 /* TCSDK.framework in Frameworks */,
-				6F3DACB424BC786400BF5B20 /* libextobjc.framework in Frameworks */,
-				6F3DACC924BC788000BF5B20 /* SRGLetterbox.framework in Frameworks */,
-				6F3DACBF24BC787F00BF5B20 /* SRGAnalytics.framework in Frameworks */,
 				6F3DAD1924BDBEFB00BF5B20 /* FetchImage in Frameworks */,
-				6F3DACCF24BC788000BF5B20 /* TCCore.framework in Frameworks */,
-				6F3DACC324BC788000BF5B20 /* SRGContentProtection.framework in Frameworks */,
-				6F3DACB224BC786400BF5B20 /* FXReachability.framework in Frameworks */,
-				6F3DACCB24BC788000BF5B20 /* SRGLogger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +250,6 @@
 				6F3DAC6624BC6A9800BF5B20 /* Sources */,
 				6F3DAC6724BC6A9800BF5B20 /* Frameworks */,
 				6F3DAC6824BC6A9800BF5B20 /* Resources */,
-				6F3DACBA24BC786400BF5B20 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,6 +259,7 @@
 			packageProductDependencies = (
 				6F3DAD1824BDBEFB00BF5B20 /* FetchImage */,
 				6F3DAD1B24BDBF0800BF5B20 /* Nuke */,
+				6F9F216424D7EC0D00068258 /* SRGLetterbox */,
 			);
 			productName = PlayLite;
 			productReference = 6F3DAC6A24BC6A9800BF5B20 /* PlayLite.app */;
@@ -422,6 +335,7 @@
 			packageReferences = (
 				6F3DAD1724BDBEFA00BF5B20 /* XCRemoteSwiftPackageReference "FetchImage" */,
 				6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */,
+				6F9F216324D7EC0D00068258 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */,
 			);
 			productRefGroup = 6F3DAC6B24BC6A9800BF5B20 /* Products */;
 			projectDirPath = "";
@@ -646,10 +560,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PlayLite/Preview Content\"";
 				DEVELOPMENT_TEAM = C859N35D2X;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = PlayLite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -671,10 +581,6 @@
 				DEVELOPMENT_ASSET_PATHS = "\"PlayLite/Preview Content\"";
 				DEVELOPMENT_TEAM = C859N35D2X;
 				ENABLE_PREVIEWS = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
 				INFOPLIST_FILE = PlayLite/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -825,6 +731,14 @@
 				minimumVersion = 9.1.1;
 			};
 		};
+		6F9F216324D7EC0D00068258 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SRGSSR/srgletterbox-apple.git";
+			requirement = {
+				branch = "feature/spm-support";
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -837,6 +751,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
+		};
+		6F9F216424D7EC0D00068258 /* SRGLetterbox */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6F9F216324D7EC0D00068258 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */;
+			productName = SRGLetterbox;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
