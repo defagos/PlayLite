@@ -43,17 +43,17 @@ struct MediaCell: View {
     }
     
     private var title: String {
-        guard let media = media else { return String(repeating: "x", count: .random(in: 15..<30)) }
+        guard let media = media else { return String(repeating: " ", count: .random(in: 15..<30)) }
         return media.title
     }
     
     private var dateString: String {
-        guard let media = media else { return String(repeating: "x", count: .random(in: 10..<15)) }
+        guard let media = media else { return String(repeating: " ", count: .random(in: 10..<15)) }
         return Self.dateFormatter.string(from: media.date)
     }
     
     private var durationString: String {
-        guard let media = media else { return "99:99" }
+        guard let media = media else { return "     " }
         return format(duration: media.duration / 1000)
     }
     
@@ -71,6 +71,7 @@ struct MediaCell: View {
                 ImageView(url: imageUrl)
                     .whenRedacted { $0.hidden() }
                     .aspectRatio(CGSize(width: 16.0, height: 9.0), contentMode: .fit)
+                    .background(Color.init(white: 0.0, opacity: 0.1))
                     .cornerRadius(3.0)
                     .layoutPriority(1)
                 Text(durationString)
