@@ -144,11 +144,18 @@ struct MediaSwimlane: View {
                 .padding(.trailing)
             ScrollView(.horizontal) {
                 HStack(spacing: 10.0) {
-                    ForEach(row.medias, id: \.uid) { media in
-                        NavigationLink(destination: PlayerView(urn: media.urn)) {
-                            MediaCell(media: media)
+                    if (row.medias.count > 0) {
+                        ForEach(row.medias, id: \.uid) { media in
+                            NavigationLink(destination: PlayerView(urn: media.urn)) {
+                                MediaCell(media: media)
+                            }
+                            .buttonStyle(PlainButtonStyle())
                         }
-                        .buttonStyle(PlainButtonStyle())
+                    }
+                    else {
+                        ForEach(0..<10) { _ in 
+                            MediaCell(media: nil)
+                        }
                     }
                 }
                 .padding(.leading)
