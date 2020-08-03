@@ -10,7 +10,7 @@ import SRGDataProvider
 import SwiftUI
 
 struct MediaCell: View {
-    let media: SRGMedia
+    let media: SRGMedia?
     
     private static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -42,14 +42,33 @@ struct MediaCell: View {
         }
     }
     
+    private var title: String {
+        guard let media = media else { return String(repeating: "x", count: .random(in: 15..<30)) }
+        return media.title
+    }
+    
+    private var dateString: String {
+        guard let media = media else { return String(repeating: "x", count: .random(in: 10..<15)) }
+        return Self.dateFormatter.string(from: media.date)
+    }
+    
+    private var durationString: String {
+        guard let media = media else { return "99:99" }
+        return format(duration: media.duration / 1000)
+    }
+    
+    private var imageUrl: URL? {
+        return media?.imageURL(for: .height, withValue: 200.0, type: .default)
+    }
+    
     var body: some View {
         VStack {
             ZStack(alignment: .bottomTrailing) {
-                ImageView(url: media.imageURL(for: .height, withValue: 200.0, type: .default))
+                ImageView(url: imageUrl)
                     .aspectRatio(CGSize(width: 16.0, height: 9.0), contentMode: .fit)
                     .cornerRadius(3.0)
                     .layoutPriority(1)
-                Text(format(duration: media.duration / 1000))
+                Text(durationString)
                     .font(.caption)
                     .foregroundColor(.white)
                     .padding(.all, 3.0)
@@ -59,10 +78,10 @@ struct MediaCell: View {
             }
             HStack {
                 VStack(alignment: .leading) {
-                    Text(media.title)
+                    Text(title)
                         .font(.headline)
                         .lineLimit(2)
-                    Text(Self.dateFormatter.string(from: media.date))
+                    Text(dateString)
                         .font(.subheadline)
                         .layoutPriority(1)
                 }
