@@ -11,9 +11,11 @@ import SRGDataProviderCombine
 import SwiftUI
 
 class HomeRow: ObservableObject, Identifiable {
-    enum Id {
+    enum Id : Equatable {
         case trending
         case latest
+        case topics
+        case latestForTopic(_ topic: SRGTopic)
     }
     
     let id: Id
@@ -24,10 +26,14 @@ class HomeRow: ObservableObject, Identifiable {
                 return "Trending now"
             case .latest:
                 return "Latest videos"
+            case .topics:
+                return "Topics"
+            case let .latestForTopic(topic):
+                return topic.title
         }
     }
     
-    func load() -> AnyCancellable {
+    func load() -> AnyCancellable? {
         let dataProvider = SRGDataProvider.current!
         switch id {
             case .trending:
@@ -38,6 +44,14 @@ class HomeRow: ObservableObject, Identifiable {
                     .assign(to: \.medias, on: self)
             case .latest:
                 return dataProvider.tvLatestMedias(for: .RTS)
+                    .map { $0.0 }
+                    .replaceError(with: [])
+                    .receive(on: DispatchQueue.main)
+                    .assign(to: \.medias, on: self)
+            case .topics:
+                return nil
+            case let .latestForTopic(topic):
+                return dataProvider.latestMediasForTopic(withUrn: topic.urn)
                     .map { $0.0 }
                     .replaceError(with: [])
                     .receive(on: DispatchQueue.main)
@@ -53,17 +67,69 @@ class HomeRow: ObservableObject, Identifiable {
 }
 
 class HomeModel: ObservableObject {
-    @Published private(set) var rows: [HomeRow] = {
-        let trendingRow = HomeRow(id: .trending)
-        let latestRow = HomeRow(id: .latest)
-        return [trendingRow, latestRow]
-    }()
+    private static let rowIds: [HomeRow.Id] = [.trending, .latest, .topics]
+    
+    @Published private(set) var rows = [HomeRow]()
     var cancellables = Set<AnyCancellable>()
     
-    func refresh() {
-        for row in rows {
-            cancellables.insert(row.load())
+    func findRow(id: HomeRow.Id) -> HomeRow? {
+        return rows.first(where: { $0.id == id })
+    }
+    
+    func updateRows(topicRows: [HomeRow] = []) {
+        var updatedRows = [HomeRow]()
+        
+        for id in Self.rowIds {
+            if id == .topics {
+                for row in topicRows {
+                    if let existingRow = findRow(id: row.id) {
+                        updatedRows.append(existingRow)
+                    }
+                    else {
+                        updatedRows.append(row)
+                    }
+                }
+            }
+            else {
+                if let existingRow = findRow(id: id) {
+                    updatedRows.append(existingRow)
+                }
+                else {
+                    updatedRows.append(HomeRow(id: id))
+                }
+            }
         }
+        
+        rows = updatedRows
+    }
+    
+    init() {
+        updateRows()
+    }
+    
+    func refresh(rows: [HomeRow]) {
+        for row in rows {
+            if let cancellable = row.load() {
+                cancellables.insert(cancellable)
+            }
+        }
+    }
+    
+    func refresh() {
+        cancellables = []
+        self.refresh(rows: rows)
+        
+        SRGDataProvider.current!.tvTopics(for: .RTS)
+            .map {
+                return $0.0.map { HomeRow(id: .latestForTopic($0)) }
+            }
+            .replaceError(with: [])
+            .receive(on: DispatchQueue.main)
+            .sink { topicRows in
+                self.updateRows(topicRows: topicRows)
+                self.refresh(rows: topicRows)
+            }
+            .store(in: &cancellables)
     }
 }
 
