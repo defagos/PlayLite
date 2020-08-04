@@ -53,7 +53,7 @@ struct MediaCell: View {
     }
     
     private var durationString: String {
-        guard let media = media else { return "     " }
+        guard let media = media else { return "--:--" }
         return format(duration: media.duration / 1000)
     }
     
@@ -81,6 +81,7 @@ struct MediaCell: View {
                     .background(Color.init(white: 0, opacity: 0.6))
                     .cornerRadius(3.0)
                     .padding([.trailing, .bottom], 5.0)
+                    .whenRedacted { $0.hidden() }
             }
             HStack {
                 VStack(alignment: .leading) {
