@@ -143,7 +143,7 @@ struct MediaSwimlane: View {
                 .padding(.leading)
                 .padding(.trailing)
             ScrollView(.horizontal) {
-                HStack(spacing: 10.0) {
+                LazyHStack(spacing: 10.0) {
                     if (row.medias.count > 0) {
                         ForEach(row.medias, id: \.uid) { media in
                             NavigationLink(destination: PlayerView(urn: media.urn)) {
@@ -170,7 +170,7 @@ struct HomeView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 40.0) {
+            LazyVStack(spacing: 40.0) {
                 ForEach(model.rows) { row in
                     MediaSwimlane(row: row)
                 }
