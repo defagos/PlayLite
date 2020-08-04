@@ -138,30 +138,50 @@ struct MediaSwimlane: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Section(header: MediaSwimlaneHeader(row: row)) {
+                ScrollView(.horizontal) {
+                    MediaSwimlaneContent(row: row)
+                }
+            }
+        }
+    }
+}
+
+struct MediaSwimlaneHeader: View {
+    let row: HomeRow
+    
+    var body: some View {
+        HStack {
             Text(row.title)
                 .font(.title2)
                 .padding(.leading)
                 .padding(.trailing)
-            ScrollView(.horizontal) {
-                LazyHStack(spacing: 10.0) {
-                    if (row.medias.count > 0) {
-                        ForEach(row.medias, id: \.uid) { media in
-                            NavigationLink(destination: PlayerView(urn: media.urn)) {
-                                MediaCell(media: media)
-                            }
-                            .buttonStyle(PlainButtonStyle())
-                        }
+            Spacer()
+        }
+    }
+}
+
+struct MediaSwimlaneContent: View {
+    let row: HomeRow
+    
+    var body: some View {
+        LazyHStack(spacing: 10.0) {
+            if (row.medias.count > 0) {
+                ForEach(row.medias, id: \.uid) { media in
+                    NavigationLink(destination: PlayerView(urn: media.urn)) {
+                        MediaCell(media: media)
                     }
-                    else {
-                        ForEach(0..<10) { _ in 
-                            MediaCell(media: nil)
-                        }
-                    }
+                    .buttonStyle(PlainButtonStyle())
                 }
-                .padding(.leading)
-                .padding(.trailing)
+            }
+            else {
+                ForEach(0..<10) { _ in
+                    MediaCell(media: nil)
+                }
             }
         }
+        .padding(.leading)
+        .padding(.trailing)
     }
 }
 
