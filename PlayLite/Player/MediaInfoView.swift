@@ -5,7 +5,8 @@
 //  Created by Samuel Défago on 16.07.20.
 //
 
-import SRGDataProvider
+import SRGDataProviderCombine
+import SRGDataProviderNetwork       // TODO: Can probably be removed by writing the preview code with Combine
 import SwiftUI
 
 struct MediaInfoView: View {

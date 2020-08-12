@@ -68,8 +68,8 @@
         "package": "SRGAnalytics",
         "repositoryURL": "https://github.com/SRGSSR/srganalytics-apple.git",
         "state": {
-          "branch": "combine-support",
-          "revision": "37c9c71b7e02c97ecbd9a0bc2ee04f3de23a5bb9",
+          "branch": "feature/spm-support",
+          "revision": "9746614355a456d09945a9c81e5771c604915cd6",
           "version": null
         }
       },
@@ -78,7 +78,7 @@
         "repositoryURL": "https://github.com/SRGSSR/srgappearance-apple.git",
         "state": {
           "branch": "feature/spm-support",
-          "revision": "1de76c7c2349878195725a563dd03c4b3ac5e8ed",
+          "revision": "05325a14b0aa2c8e5e343aa452ec37c2f862511f",
           "version": null
         }
       },
@@ -95,8 +95,8 @@
         "package": "SRGDataProvider",
         "repositoryURL": "https://github.com/SRGSSR/srgdataprovider-apple.git",
         "state": {
-          "branch": "combine-support",
-          "revision": "f3aa53634a60a5ec1fa0135ad7108b7ccee3a926",
+          "branch": "feature/spm-support",
+          "revision": "7ef124c2052073c25b9417eb4127c21eed254bcf",
           "version": null
         }
       },
@@ -122,8 +122,8 @@
         "package": "SRGLetterbox",
         "repositoryURL": "https://github.com/SRGSSR/srgletterbox-apple.git",
         "state": {
-          "branch": "combine-support",
-          "revision": "92fa8e5878d48dfebd8c2f05e6f2577c6ad04790",
+          "branch": "feature/spm-support",
+          "revision": "f12688c5526c8fb93630f0b89773020cfdc562f4",
           "version": null
         }
       },

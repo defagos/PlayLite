@@ -6,7 +6,7 @@
 //
 
 import SRGAppearance
-import SRGDataProvider
+import SRGDataProviderNetwork       // TODO: Can probably be removed by writing the preview code with Combine
 import SwiftUI
 
 struct MediaCell: View {

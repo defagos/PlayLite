@@ -18,11 +18,11 @@
 		6F3DACDC24BC87C700BF5B20 /* MediaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3DACDB24BC87C700BF5B20 /* MediaCell.swift */; };
 		6F3DAD1924BDBEFB00BF5B20 /* FetchImage in Frameworks */ = {isa = PBXBuildFile; productRef = 6F3DAD1824BDBEFB00BF5B20 /* FetchImage */; };
 		6F3DAD1C24BDBF0800BF5B20 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 6F3DAD1B24BDBF0800BF5B20 /* Nuke */; };
+		6F46760124E43E1F0074B947 /* SRGLetterbox in Frameworks */ = {isa = PBXBuildFile; productRef = 6F46760024E43E1F0074B947 /* SRGLetterbox */; };
+		6F46760424E43EE10074B947 /* SRGDataProviderCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 6F46760324E43EE10074B947 /* SRGDataProviderCombine */; };
 		6F50E7C524C0593F00344B84 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50E7C424C0593F00344B84 /* PlayerViewController.swift */; };
 		6F50E7C724C05D8400344B84 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50E7C624C05D8400344B84 /* PlayerView.swift */; };
 		6F50E7C924C0781A00344B84 /* PlayerInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F50E7C824C0781A00344B84 /* PlayerInfoView.swift */; };
-		6F9F216524D7EC0D00068258 /* SRGLetterbox in Frameworks */ = {isa = PBXBuildFile; productRef = 6F9F216424D7EC0D00068258 /* SRGLetterbox */; };
-		6FD7952224D7F3FB00E27E57 /* SRGDataProviderCombine in Frameworks */ = {isa = PBXBuildFile; productRef = 6FD7952124D7F3FB00E27E57 /* SRGDataProviderCombine */; };
 		6FDB114624D87C6700BD9C3C /* RedactingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDB114524D87C6700BD9C3C /* RedactingView.swift */; };
 		6FE7F53F24BEE6A5006A5244 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FE7F53E24BEE6A5006A5244 /* ImageView.swift */; };
 		6FF6042124C0900300D37895 /* MediaInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF6042024C0900200D37895 /* MediaInfoView.swift */; };
@@ -94,8 +94,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6FD7952224D7F3FB00E27E57 /* SRGDataProviderCombine in Frameworks */,
-				6F9F216524D7EC0D00068258 /* SRGLetterbox in Frameworks */,
+				6F46760424E43EE10074B947 /* SRGDataProviderCombine in Frameworks */,
+				6F46760124E43E1F0074B947 /* SRGLetterbox in Frameworks */,
 				6F3DAD1C24BDBF0800BF5B20 /* Nuke in Frameworks */,
 				6F3DAD1924BDBEFB00BF5B20 /* FetchImage in Frameworks */,
 			);
@@ -264,8 +264,8 @@
 			packageProductDependencies = (
 				6F3DAD1824BDBEFB00BF5B20 /* FetchImage */,
 				6F3DAD1B24BDBF0800BF5B20 /* Nuke */,
-				6F9F216424D7EC0D00068258 /* SRGLetterbox */,
-				6FD7952124D7F3FB00E27E57 /* SRGDataProviderCombine */,
+				6F46760024E43E1F0074B947 /* SRGLetterbox */,
+				6F46760324E43EE10074B947 /* SRGDataProviderCombine */,
 			);
 			productName = PlayLite;
 			productReference = 6F3DAC6A24BC6A9800BF5B20 /* PlayLite.app */;
@@ -341,8 +341,8 @@
 			packageReferences = (
 				6F3DAD1724BDBEFA00BF5B20 /* XCRemoteSwiftPackageReference "FetchImage" */,
 				6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */,
-				6F9F216324D7EC0D00068258 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */,
-				6FD7952024D7F3FB00E27E57 /* XCRemoteSwiftPackageReference "srgdataprovider-apple" */,
+				6F4675FF24E43E1F0074B947 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */,
+				6F46760224E43EE10074B947 /* XCRemoteSwiftPackageReference "srgdataprovider-apple" */,
 			);
 			productRefGroup = 6F3DAC6B24BC6A9800BF5B20 /* Products */;
 			projectDirPath = "";
@@ -739,19 +739,19 @@
 				minimumVersion = 9.1.1;
 			};
 		};
-		6F9F216324D7EC0D00068258 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */ = {
+		6F4675FF24E43E1F0074B947 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SRGSSR/srgletterbox-apple.git";
 			requirement = {
-				branch = "combine-support";
+				branch = "feature/spm-support";
 				kind = branch;
 			};
 		};
-		6FD7952024D7F3FB00E27E57 /* XCRemoteSwiftPackageReference "srgdataprovider-apple" */ = {
+		6F46760224E43EE10074B947 /* XCRemoteSwiftPackageReference "srgdataprovider-apple" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SRGSSR/srgdataprovider-apple.git";
 			requirement = {
-				branch = "combine-support";
+				branch = "feature/spm-support";
 				kind = branch;
 			};
 		};
@@ -768,14 +768,14 @@
 			package = 6F3DAD1A24BDBF0800BF5B20 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
 		};
-		6F9F216424D7EC0D00068258 /* SRGLetterbox */ = {
+		6F46760024E43E1F0074B947 /* SRGLetterbox */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6F9F216324D7EC0D00068258 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */;
+			package = 6F4675FF24E43E1F0074B947 /* XCRemoteSwiftPackageReference "srgletterbox-apple" */;
 			productName = SRGLetterbox;
 		};
-		6FD7952124D7F3FB00E27E57 /* SRGDataProviderCombine */ = {
+		6F46760324E43EE10074B947 /* SRGDataProviderCombine */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6FD7952024D7F3FB00E27E57 /* XCRemoteSwiftPackageReference "srgdataprovider-apple" */;
+			package = 6F46760224E43EE10074B947 /* XCRemoteSwiftPackageReference "srgdataprovider-apple" */;
 			productName = SRGDataProviderCombine;
 		};
 /* End XCSwiftPackageProductDependency section */
